@@ -1,0 +1,531 @@
+html {
+  background-color: #3399cc;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+}
+*:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#user-logged-in {
+  display: none;
+  height: auto;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: #3399cc;
+}
+
+#header-logo {
+  color: rgba(136, 136, 206, 0.8);
+  font-family: "Lobster", cursive;
+  font-size: 28px;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+#greet {
+  text-align: center;
+  font-size: 24px !important; 
+  color: #f1f1f1 !important;
+}
+
+#sign-out {
+  background-color: #c1392b;
+  width: 150px;
+  margin:20px 0 0 30px;
+}
+
+#login-screen {
+  display: flex;
+
+  color: #ccc;
+  height: auto;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: rgba(27, 27, 50, 0.8);
+  padding-top: 20px;
+}
+
+#publish-new {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #3399cc;
+    color: #f1f1f1;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+    text-align: center;
+    height: 40px;
+    width: 150px;
+    margin-bottom: 25px;
+}
+
+#new-todo-item {
+    display: none;
+    background-color: #f1f1f1;
+}
+
+.parentDiv{
+  border-radius: 10px;
+  background-color:#f2f2f2;
+  width: 90%;
+  margin:0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.parentDiv:hover{
+  box-shadow: -2px 2px #3399cc;
+}
+
+#container {
+  padding-top: 10px;
+}
+
+#todo-data{
+  display: inline-block;
+  float: left;
+  width: 50%;
+  height: 100%;
+  margin-left: 10px;
+}
+#todo-tools{
+  display: inline-block;
+  float: right;
+  height: 100%;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#todo-done-button{
+  float:right;
+  height:30px;
+  width:30px;
+  cursor:pointer;
+  background-color:#fff;
+  border:none;
+  border-radius:20px;
+  outline:none;
+  margin-right: 5px;
+}
+
+#todo-done-button:hover{
+  background-color:#75b79e;
+  color:white;
+}
+
+#todo-done-button:active{
+  transform: translateY(4px);
+}
+
+#todo-edit-button{
+  float:right;
+  font-size: 20px;
+  height:30px;
+  width:30px;
+  cursor:pointer;
+  color: #3399cc;
+  background-color:#f2f2f2;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  width: 95%;
+  padding: 12px 20px;
+  margin: 8px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  padding-left: 10px;
+  margin-bottom: -10px;
+  color: #ecf0f1;
+}
+
+.button {
+  padding: 12px 20px;
+  width: 97.5%;
+  background: #5cb85c;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 5px;
+}
+
+.button:active {
+  background-color: #45a049;
+}
+.button:hover {
+  background-color: #45a049;
+}
+
+#signUp {
+  background-color: #3399cc;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  margin-bottom: 3px;
+  width: 20px;
+  height: 20px;
+}
+
+#checkboxes {
+  color: #ecf0f1;
+  margin-left: 5px;
+  display: flex;
+  text-align: left;
+  width: 95%;
+  font-size: 1.5rem;
+  height: 100%;
+}
+
+#checkbox {
+  margin-top: 5px;
+}
+
+#greet {
+  color: wheat;
+  font-size: 18px;
+}
+
+#username {
+  display: none;
+}
+
+#have-account {
+  display: none;
+}
+
+#registering {
+  display: none;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #ecf0f1;
+    width: 90%;
+    margin: 10px;
+    height: 50px;
+}
+
+.list-item p {
+    font-size: 18px;
+}
+
+.inner-div {
+    border: 2px solid #3399cc;
+    width: 250px;
+    margin-left: 50px;
+    position: relative;
+    top:15px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.text-preview {
+    margin-top: 20px;
+    position: relative;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 300px;
+    text-align: center;
+    color: #3399cc;
+    font-size: 18px;
+}
+
+.text-preview h3 {
+    position: relative;
+    top: 0;
+}
+
+#current-date {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding-top: 5px;
+    transform: translate(-50%);
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #eee;
+}
+
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.88); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+
+  
+#logged-in-body {
+    height: 100vh;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    border-top-left-radius: 4%;
+    border-top-right-radius: 4%;
+}
+
+#logged-in-header {
+    background-color: #3399cc;
+}
+
+#hamburger-icon {
+    background-color: #3399cc;
+    border: none;
+    font-size: 30px;
+    color: #f1f1f1;
+}
+
+
+#add-new-todo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #3399cc;
+    color: #f1f1f1;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+    text-align: center;
+    height: 40px;
+    width: 150px;
+    margin-bottom: 25px;
+}
+
+#new-todo-item {
+    display: none;
+    background-color: #f1f1f1;
+}
+
+.parentDiv{
+  overflow: auto;
+  border-radius: 10px;
+  background-color:#f2f2f2;
+  width: 90%;
+  height:auto;
+  word-break: break-all;
+  margin:0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.parentDiv:hover{
+  box-shadow: -2px 2px #3399cc;
+}
+
+#container {
+  padding-top: 10px;
+}
+
+#todo-data{
+  display: inline-block;
+  float: left;
+  width: 50%;
+  height: 100%;
+  margin-left: 10px;
+}
+#todo-tools{
+  display: inline-block;
+  float: right;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#todo-done-button{
+  float:right;
+  height:30px;
+  width:30px;
+  cursor:pointer;
+  background-color:#fff;
+  border:none;
+  border-radius:20px;
+  outline:none;
+  margin-right: 5px;
+}
+
+#todo-done-button:hover{
+  background-color:#75b79e;
+  color:white;
+}
+
+#todo-done-button:active{
+  transform: translateY(4px);
+}
+
+#todo-edit-button{
+  float:right;
+  font-size: 20px;
+  height:30px;
+  width:30px;
+  cursor:pointer;
+  color: #3399cc;
+  background-color:#f2f2f2;
+  border:none;
+  border-radius:20px;
+  outline:none;
+  margin-right: 5px;
+}
+
+#todo-edit-button-editing{
+  float:right;
+  height:30px;
+  width:30px;
+  cursor:pointer;
+  background-color:#45a049;
+  color: white;
+  border:none;
+  border-radius:20px;
+  outline:none;
+  margin-right: 5px;
+}
+#todo-edit-button:hover{
+  background-color:#45a049;
+  color:white;
+}
+#todo-edit-button:active{
+  transform: translateY(4px);
+}
+
+#todo-delete-button{
+  float:right;
+  height:30px;
+  width:30px;
+  cursor:pointer;
+  color: #3399cc;
+  background-color:#f2f2f2;
+  border:none;
+  border-radius:20px;
+  outline:none;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+#todo-delete-button:hover{
+  background-color:#fa163f;
+  color:white;
+}
+
+#todo-delete-button:active{
+  transform: translateY(4px);
+}
+
+#todo-title{
+  background-color:#f2f2f2;
+  color: #3399cc;
+  font-weight:bold;
+  font-size:16px;
+  float: left;
+  width:100%;
+}
+
+#title-editing{
+  background-color:#f2f2f2;
+  font-weight:bold;
+  font-size:15px;
+  float: left;
+  width:100%;
+  border-bottom: 1px solid #3399cc;
+  outline: none;
+}
+
+#title-editing:focus{
+  border-bottom: 3px solid #3399cc;
+}
+
+
+#description-editing{
+  background-color:#f2f2f2;
+  font-weight:lighter;
+  font-size:12px;
+  float: left;
+  width:100%;
+  border-bottom: 1px solid #3399cc;
+  outline: none;
+}
+
+#description-editing:focus{
+  border-bottom: 3px solid #3399cc;
+
+}
+
+#todo-description{
+  background-color:#f2f2f2;
+  color:grey;
+  font-size:14px;
+  float: left;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 100%;
+}

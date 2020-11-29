@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    
+    <div id="login-screen">
+        <div id="header-logo">
+        <h1>To Do App</h1>
+        </div>
+        <h1 id="login-screen-text"></h1>
+        
+        
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" id="email" placeholder="Enter your Email"><br>
+        <div id="username">
+            <label for="user-name">Username:</label><br>
+        <input type="text" id="user-name-input" placeholder="Enter your User Name"><br>
+        </div>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password" placeholder="Enter your password"><br>
+        <div id="checkboxes">
+            <input type="checkbox" id="show-password" id="checkboxes"><span id="checkbox">Show Password</span><br>
+        </div>
+        
+        
+        <button id="signIn" onclick="signIn()" class="button">Log in</button>
+        <button id="signUp" class="button">Register</button>
+        <button id="have-account" class="button">Have Account</button>
+        
+    </div>
+   
+
+    <div id="user-logged-in">
+        <div id="logged-in-header">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#">Change Name</a>
+                <a href="#">Change Email</a>
+                <a href="#">Change Password</a>
+                <button id="sign-out" class="button">Log out</button>
+              </div>
+              
+              <!-- Use any element to open the sidenav -->
+              <button id='hamburger-icon'onclick="openNav()">☰</button>
+            
+            <p id="current-date"></p>
+            <p id="greet"></p>
+            <button id="add-new-todo" class="button">Add New</button>
+       
+              
+        </div>
+        <div id="logged-in-body">
+            <div id="new-todo-item">
+                <input id='new-todo-title'type="text" placeholder="Title">
+                <input id='new-todo-description' type="text" placeholder="Description">
+                <button id="publish-new" class="button">Done</button>
+            </div>
+            <div id="container"> 
+            </div>
+            
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

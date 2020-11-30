@@ -15,17 +15,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+// Firebase auth and refs
 const auth = firebase.auth();
 const rootRef = firebase.database().ref().child("users");
 const itemsRootRef = firebase.database().ref().child("items");
-let name = document.getElementById("user-name-input");
+
+// Buttons
 const signInButton = document.getElementById("signIn");
 const haveAccountButton = document.getElementById("have-account");
 const signUpButton = document.getElementById("signUp");
 const signOutButton = document.getElementById("sign-out");
-const loginScreenText = document.getElementById("login-screen-text");
 const showPasswordToggle = document.getElementById("show-password");
+
+// Text Fields
+const loginScreenText = document.getElementById("login-screen-text");
 const currentDateTextField = document.getElementById("current-date");
+let name = document.getElementById("user-name-input");
 
 /*
   Managing User Data, sign-in, sign-out

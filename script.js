@@ -22,15 +22,40 @@ const itemsRootRef = firebase.database().ref().child("items");
 
 // Buttons
 const signInButton = document.getElementById("signIn");
-const haveAccountButton = document.getElementById("have-account");
+//const haveAccountButton = document.getElementById("have-account");
 const signUpButton = document.getElementById("signUp");
 const signOutButton = document.getElementById("sign-out");
-const showPasswordToggle = document.getElementById("show-password");
+const showPasswordToggle = document.getElementById('eye-open');
 
 // Text Fields
 const loginScreenText = document.getElementById("login-screen-text");
 const currentDateTextField = document.getElementById("current-date");
 let name = document.getElementById("user-name-input");
+
+
+let newUserNameTextField = document.getElementById('new-user-name-text')
+let setNewUserName = document.getElementById('set-new-username-button')
+let sideNavChangeName = document.getElementById('change-name-menu')
+let changeNamePrompt = document.getElementById('change-name')
+
+let newEmailTextField = document.getElementById('new-email-text')
+let setNewEmailButton = document.getElementById('set-new-email-button')
+let sideNavChangeEmail = document.getElementById('change-email-menu')
+let changeEmailPrompt = document.getElementById('change-email')
+
+
+const sideNavDeleteUSer = document.getElementById('delete-user-menu')
+const deleteUserPopUp = document.getElementById('delete-account-popup')
+const deleteAccountButton = document.getElementById('delete-account-button')
+let deleteAccountTextValue = document.getElementById('delete-account-text')
+
+const sideNavChangePassword = document.getElementById('change-password-menu')
+
+const returnToMain = document.getElementById('return-to-main-page-button')
+const overlay = document.getElementById('overlay')
+let emailForReset = document.getElementById("forgot-password-email-verification")
+
+const sideNavUserText = document.getElementById('side-nav-user-text')
 
 /*
   Managing User Data, sign-in, sign-out
@@ -38,13 +63,23 @@ let name = document.getElementById("user-name-input");
 
 // Writing user data in database
 function writeUserData(name, email) {
-  firebase
+  let userKey = firebase.database().ref().child("users/").push().key;
+  let user = {
+    username: name,
+    email: email,
+    key: userKey
+  };
+
+  let updates = {};
+  updates["/users/" + userKey] = user;
+  firebase.database().ref().update(updates);
+  /*firebase
     .database()
     .ref("users/" + name)
     .set({
       username: name,
       email: email,
-    });
+    }); */
 }
 
 //Registering new user
@@ -86,6 +121,7 @@ auth.onAuthStateChanged((user) => {
 
       if (currentUserEmail == dbEmail) {
         document.getElementById("greet").innerText = `Welcome ${dbUserName}`;
+        sideNavUserText.innerText = `${dbUserName} Profile Settings`
         createNewElementsForEachTodo(currentUserEmail);
         itemsRootRef.on("child_added", (snap) => {
           let itemDescription = snap.child("description").val();
@@ -113,6 +149,69 @@ auth.onAuthStateChanged((user) => {
       postNewTodo(currentUserEmail);
       document.getElementById("new-todo-item").style.display = "none";
     });
+
+
+
+    sideNavChangeName.addEventListener('click', () => {
+      closeNav()
+      changeNamePrompt.style.display = 'block';
+    })
+
+    sideNavChangeEmail.addEventListener('click', () => {
+      closeNav()
+      
+      changeEmailPrompt.style.display = 'block';
+    })
+
+
+    setNewUserName.addEventListener('click', () => {
+      if (newUserNameTextField.value !== '') {
+        changeUserName(newUserNameTextField.value, currentUserEmail)
+        document.getElementById("greet").innerText = `Welcome ${newUserNameTextField.value}`;
+        sideNavUserText.innerText = `${newUserNameTextField.value}'s Profile Settings`
+        changeNamePrompt.style.display = 'none';
+      }
+    })
+
+
+    setNewEmailButton.addEventListener('click', () => {
+      if (newEmailTextField.value != '') {
+        changeUserEmailAddress(newEmailTextField.value, currentUserEmail)
+        changeEmailPrompt.style.display = 'none'
+      }
+    })
+
+    sideNavDeleteUSer.addEventListener('click', () => {
+      //deleteUser(currentUser,currentUserEmail)
+      deleteUserPopUp.style.display = 'block';
+      closeNav();
+      overlay.style.display = 'block'
+
+      returnToMain.addEventListener('click', () => {
+        deleteUserPopUp.style.display = 'none';
+        overlay.style.display = 'none';
+      })
+
+      deleteAccountButton.addEventListener('click', () => {
+
+        if (deleteAccountTextValue.value === 'DELETE') {
+          signOut()
+          deleteUser(currentUser, currentUserEmail)
+          deleteUserPopUp.style.display = 'none';
+          overlay.style.display = 'none';
+        } else {
+          document.getElementById('delete-account-text-wrong-input').style.display = 'block'
+          setInterval(() => { document.getElementById('delete-account-text-wrong-input').style.display = 'none' }, 5000)
+        }
+
+      })
+
+    })
+
+    sideNavChangePassword.addEventListener('click', () => {
+      resetPasswordWhenUserIsLoggedIn(currentUserEmail)
+    })
+
   } else {
     // In this case user is not signed in, changes the screen to log-in screen
     document.getElementById("login-screen").style.display = "block";
@@ -123,23 +222,40 @@ auth.onAuthStateChanged((user) => {
   Sign in, Sign out and Have account buttons
 */
 
-signUpButton.addEventListener("click", () => {
-  signInButton.style.display = "none";
-  haveAccountButton.style.display = "inline-block";
-  document.getElementById("username").style.display = "block";
 
-  if (email.value !== "" && password.value !== "") {
-    signUp();
-  } else {
-  }
-});
 
-haveAccountButton.addEventListener("click", () => {
-  signInButton.style.display = "inline-block";
-  haveAccountButton.style.display = "none";
-  document.getElementById("username").style.display = "none";
-  clearFields();
-});
+function pullUpSignUpForm() {
+
+  signUpButton.addEventListener("click", () => {
+    document.getElementById("username").style.display = "block";
+    document.getElementById("register").style.display = "block";
+    document.getElementById("sign-in").style.display = "none";
+    document.getElementById("dont-have-account").style.display = "none";
+    document.getElementById("already-have-account").style.display = "block";
+    emailForReset.style.display = 'none'
+    document.getElementById("forgot-password").style.display = "none";
+    
+    document.getElementById('register').addEventListener('click', () => {
+      if (email.value !== "" && password.value !== "") {
+        signUp();
+      } else {
+      }
+    })
+  });
+}
+
+document.getElementById("already-have-account").addEventListener('click', () => {
+    document.getElementById("username").style.display = "none";
+    document.getElementById("email-div").style.display = "block";
+    document.getElementById("password-div").style.display = "block";
+    document.getElementById("reset-password-btn").style.display = "none";
+    document.getElementById("forgot-password-email-verification").style.display = 'none'
+    document.getElementById("register").style.display = "none";
+    document.getElementById("sign-in").style.display = "block";
+    document.getElementById("dont-have-account").style.display = "block";
+    document.getElementById("already-have-account").style.display = "none";
+    document.getElementById("forgot-password").style.display = "block";
+})
 
 signOutButton.addEventListener("click", () => {
   signOut();
@@ -154,12 +270,20 @@ signOutButton.addEventListener("click", () => {
 // Set the width of the side navigation to 250px
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
+  overlay.style.display = 'block'
 }
 
 // Set the width of the side navigation to 0
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  overlay.style.display = 'none'
 }
+
+// Change name
+sideNavChangeName.addEventListener('click', () => {
+  closeNav()
+  changeNamePrompt.style.display = 'block';
+})
 
 /* 
   TO DO Operations (post, update, remove)
@@ -332,6 +456,7 @@ function clearFields() {
   email.value = "";
   password.value = "";
   name.value = "";
+  emailForReset.value = '';
 }
 // Show Password Toggle Button
 function showPassword() {
@@ -352,3 +477,169 @@ let day = date.getDate();
 let monthName = date.toLocaleString("default", { month: "short" });
 
 currentDateTextField.innerText = `${day} ${monthName}`;
+
+
+/*
+  User Account Settings (Change Name, Email, Password, Delete account)
+*/
+
+// Changes Username
+function changeUserName(newUserName, currentUserEmail) {
+  firebase
+    .database()
+    .ref("users/")
+    .once("value", (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        userKeys = childSnapshot.key
+        userEmail = childSnapshot.val().email;
+        userValues = childSnapshot.val();
+
+        if (currentUserEmail == userEmail) {
+          firebase.database().ref().child("users/" + userKeys).update({
+            username: newUserName
+          })
+        }
+      })
+    })
+}
+
+// Changes User Email Address
+function changeUserEmailAddress(newEmailAddress, currentUserEmail) {
+  firebase
+    .database()
+    .ref("users/")
+    .once("value", (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        userKeys = childSnapshot.key
+        userEmail = childSnapshot.val().email;
+        userValues = childSnapshot.val();
+
+
+        if (userEmail == currentUserEmail) {
+          firebase.database().ref().child("users/" + userKeys).update({
+            email: newEmailAddress
+          })
+          // updates firebase auth with new email
+          firebase.auth().currentUser.updateEmail(newEmailAddress)
+        }
+      })
+    })
+
+  // updates the new email in posts as well
+  // since all posts are linked to users via email
+  firebase
+    .database()
+    .ref("items/")
+    .once("value", (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        itemsKey = childSnapshot.key
+        itemsUserEmail = childSnapshot.val().userid;
+
+        if (currentUserEmail === itemsUserEmail) {
+          firebase.database().ref().child("items/" + itemsKey).update({
+            userid: newEmailAddress
+          })
+
+        }
+      })
+    })
+}
+
+
+function deleteUser(currentUser, currentUserEmail) {
+  signOut()
+  currentUser.delete()
+
+  firebase
+    .database()
+    .ref("users/")
+    .once("value", (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        userKeys = childSnapshot.key
+        userEmail = childSnapshot.val().email;
+
+        if (currentUserEmail === userEmail) {
+          firebase.database().ref().child("users/" + userKeys).remove()
+        }
+      })
+    })
+
+  firebase
+    .database()
+    .ref("items/")
+    .once("value", (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        itemsKey = childSnapshot.key
+        itemsUserEmail = childSnapshot.val().userid;
+
+        if (currentUserEmail === itemsUserEmail) {
+          firebase.database().ref().child("items/" + itemsKey).remove()
+
+        }
+      })
+    })
+}
+
+
+
+function resetPasswordWhenUserIsLoggedIn(currentUserEmail) {
+  firebase.auth().useDeviceLanguage();
+  auth.sendPasswordResetEmail(currentUserEmail).then(function() {
+  signOut()
+  }).catch(function(error) {
+    console.log(error)
+  });
+}
+
+// Forgot Password located at login screen
+function resetPasswordWhenUserIsLoggedOut(email) {
+  firebase.auth().useDeviceLanguage();
+  auth.sendPasswordResetEmail(email).then(function() {
+  }).catch(function(error) {
+    console.log(error)
+  });
+}
+
+const resetPasswordButton = document.getElementById("reset-password-btn")
+
+ resetPasswordButton.addEventListener('click', () => {
+  if (emailForReset.value !== '') {
+
+    resetPasswordWhenUserIsLoggedOut(emailForReset.value)
+    document.getElementById("username").style.display = "none";
+    document.getElementById("password-div").style.display = "block";
+    document.getElementById("email-div").style.display = "block";
+    document.getElementById("forgot-password-email-verification").style.display = "none";
+    document.getElementById("reset-password-btn").style.display = "none";
+    document.getElementById("register").style.display = "none";
+    document.getElementById("sign-in").style.display = "block";
+    document.getElementById("dont-have-account").style.display = "block";
+    document.getElementById("already-have-account").style.display = "none";
+    document.getElementById("forgot-password").style.display = "block";
+    clearFields()
+  }
+ })
+
+function removeSpaces(string) {
+  return string.split(' ').join('');
+ }
+
+
+ const forgotPasswordButton = document.getElementById('forgot-password')
+ const verifyEmailForPasswordReset = document.getElementById('forgot-password-email-verification')
+
+ forgotPasswordButton.addEventListener('click', () => {
+  document.getElementById("username").style.display = "none";
+  document.getElementById("password-div").style.display = "none";
+  document.getElementById("email-div").style.display = "none";
+  document.getElementById("forgot-password-email-verification").style.display = "block";
+  document.getElementById("reset-password-btn").style.display = "block";
+  document.getElementById("register").style.display = "none";
+  document.getElementById("sign-in").style.display = "none";
+  document.getElementById("dont-have-account").style.display = "none";
+  document.getElementById("already-have-account").style.display = "block";
+  document.getElementById("forgot-password").style.display = "none";
+ })
+
+
+ 

@@ -1,18 +1,13 @@
 html {
-  background-color: #3399cc;
   background-size: cover;
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
   font-size: 10px;
+  overflow: hidden;
 }
 *:focus {
   outline: none;
-}
-
-body {
-  margin: 0;
-  padding: 0;
 }
 
 #user-logged-in {
@@ -20,7 +15,7 @@ body {
   height: auto;
   width: 100%;
   border-radius: 0.25rem;
-  background-color: #3399cc;
+  background-image: linear-gradient(#2ea8df, #3399cc);
 }
 
 #header-logo {
@@ -35,26 +30,28 @@ body {
 
 #greet {
   text-align: center;
-  font-size: 24px !important; 
+  font-size: 24px !important;
   color: #f1f1f1 !important;
 }
 
-#sign-out {
-  background-color: #c1392b;
-  width: 150px;
-  margin:20px 0 0 30px;
+
+#sign-out-container .side-nav-container svg {
+  margin-left: 3px;
 }
 
-#login-screen {
-  display: flex;
-
-  color: #ccc;
-  height: auto;
-  width: 100%;
-  border-radius: 0.25rem;
-  background-color: rgba(27, 27, 50, 0.8);
-  padding-top: 20px;
+#sign-in {
+  margin-left: 5px;
 }
+
+#forgot-password {
+  color: #ffffff;
+}
+
+#reset-password-btn {
+  margin-left: 5px;
+  display: none;
+}
+
 
 #publish-new {
   position: relative;
@@ -62,30 +59,30 @@ body {
   left: 50%;
   transform: translate(-50%);
   background-color: #3399cc;
-    color: #f1f1f1;
-    border-radius: 10px;
-    border: 2px solid #f1f1f1;
-    text-align: center;
-    height: 40px;
-    width: 150px;
-    margin-bottom: 25px;
+  color: #f1f1f1;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  text-align: center;
+  height: 40px;
+  width: 150px;
+  margin-bottom: 25px;
 }
 
 #new-todo-item {
-    display: none;
-    background-color: #f1f1f1;
+  display: none;
+  background-color: #f1f1f1;
 }
 
-.parentDiv{
+.parentDiv {
   border-radius: 10px;
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
   width: 90%;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-.parentDiv:hover{
+.parentDiv:hover {
   box-shadow: -2px 2px #3399cc;
 }
 
@@ -93,14 +90,14 @@ body {
   padding-top: 10px;
 }
 
-#todo-data{
+#todo-data {
   display: inline-block;
   float: left;
   width: 50%;
   height: 100%;
   margin-left: 10px;
 }
-#todo-tools{
+#todo-tools {
   display: inline-block;
   float: right;
   height: 100%;
@@ -111,37 +108,37 @@ body {
   flex-direction: row;
 }
 
-#todo-done-button{
-  float:right;
-  height:30px;
-  width:30px;
-  cursor:pointer;
-  background-color:#fff;
-  border:none;
-  border-radius:20px;
-  outline:none;
+#todo-done-button {
+  float: right;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  outline: none;
   margin-right: 5px;
 }
 
-#todo-done-button:hover{
-  background-color:#75b79e;
-  color:white;
+#todo-done-button:hover {
+  background-color: #75b79e;
+  color: white;
 }
 
-#todo-done-button:active{
+#todo-done-button:active {
   transform: translateY(4px);
 }
 
-#todo-edit-button{
-  float:right;
+#todo-edit-button {
+  float: right;
   font-size: 20px;
-  height:30px;
-  width:30px;
-  cursor:pointer;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
   color: #3399cc;
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
 }
-
+/*
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -166,15 +163,17 @@ label {
 }
 
 .button {
-  padding: 12px 20px;
-  width: 97.5%;
-  background: #5cb85c;
-  font-family: "Poppins", sans-serif;
+  background: white;
+  display: block;
+  color: #d61e2d;
+  width: 100%;
   border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  margin: 5px;
+  border-radius: 40px;
+  padding: 12px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 32px;
+  outline: none;
 }
 
 .button:active {
@@ -183,9 +182,18 @@ label {
 .button:hover {
   background-color: #45a049;
 }
-
+*/
 #signUp {
-  background-color: #3399cc;
+  color: #ffffff;
+}
+
+#already-have-account {
+  display: none;
+  color: #ffffff;
+}
+
+#forgot-password-email-verification {
+  display: none;
 }
 
 input[type="checkbox"] {
@@ -226,160 +234,163 @@ input[type="checkbox"] {
   display: none;
 }
 
+#register {
+  display: none;
+}
+
 .list-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #ecf0f1;
-    width: 90%;
-    margin: 10px;
-    height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #ecf0f1;
+  width: 90%;
+  margin: 10px;
+  height: 50px;
 }
 
 .list-item p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .inner-div {
-    border: 2px solid #3399cc;
-    width: 250px;
-    margin-left: 50px;
-    position: relative;
-    top:15px;
-    margin-top: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 2px solid #3399cc;
+  width: 250px;
+  margin-left: 50px;
+  position: relative;
+  top: 15px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .text-preview {
-    margin-top: 20px;
-    position: relative;
-    top: -10px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 300px;
-    text-align: center;
-    color: #3399cc;
-    font-size: 18px;
+  margin-top: 20px;
+  position: relative;
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 300px;
+  text-align: center;
+  color: #3399cc;
+  font-size: 18px;
 }
 
 .text-preview h3 {
-    position: relative;
-    top: 0;
+  position: relative;
+  top: 0;
 }
 
 #current-date {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    padding-top: 5px;
-    transform: translate(-50%);
-    text-align: center;
-    margin-top: 10px;
-    font-size: 18px;
-    color: #eee;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding-top: 5px;
+  transform: translate(-50%);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #eee;
 }
-
 
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.88); /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-  }
-  
-  /* The navigation menu links */
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  #main {
-    transition: margin-left .5s;
-    padding: 20px;
-  }
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 11; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.88); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  overflow-y: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
 
-  
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #3399cc;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #3399cc;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  color: #ffffff;
+  right: 10px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+
 #logged-in-body {
-    height: 100vh;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    border-top-left-radius: 4%;
-    border-top-right-radius: 4%;
+  height: 100vh;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  border-top-left-radius: 4%;
+  border-top-right-radius: 4%;
 }
 
 #logged-in-header {
-    background-color: #3399cc;
+  background-color: #3399cc;
 }
 
 #hamburger-icon {
-    background-color: #3399cc;
-    border: none;
-    font-size: 30px;
-    color: #f1f1f1;
+  background-color: #3399cc;
+  border: none;
+  font-size: 30px;
+  color: #f1f1f1;
 }
 
-
 #add-new-todo {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    background-color: #3399cc;
-    color: #f1f1f1;
-    border-radius: 10px;
-    border: 2px solid #f1f1f1;
-    text-align: center;
-    height: 40px;
-    width: 150px;
-    margin-bottom: 25px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #3399cc;
+  color: #f1f1f1;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  text-align: center;
+  height: 40px;
+  width: 150px;
+  margin-bottom: 25px;
 }
 
 #new-todo-item {
-    display: none;
-    background-color: #f1f1f1;
+  display: none;
+  background-color: #f1f1f1;
 }
 
-.parentDiv{
+.parentDiv {
   overflow: auto;
   border-radius: 10px;
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
   width: 90%;
-  height:auto;
+  height: auto;
   word-break: break-all;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-.parentDiv:hover{
+.parentDiv:hover {
   box-shadow: -2px 2px #3399cc;
 }
 
@@ -387,14 +398,14 @@ input[type="checkbox"] {
   padding-top: 10px;
 }
 
-#todo-data{
+#todo-data {
   display: inline-block;
   float: left;
   width: 50%;
   height: 100%;
   margin-left: 10px;
 }
-#todo-tools{
+#todo-tools {
   display: inline-block;
   float: right;
   height: 100%;
@@ -403,129 +414,500 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-#todo-done-button{
-  float:right;
-  height:30px;
-  width:30px;
-  cursor:pointer;
-  background-color:#fff;
-  border:none;
-  border-radius:20px;
-  outline:none;
+#todo-done-button {
+  float: right;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  outline: none;
   margin-right: 5px;
 }
 
-#todo-done-button:hover{
-  background-color:#75b79e;
-  color:white;
-}
-
-#todo-done-button:active{
-  transform: translateY(4px);
-}
-
-#todo-edit-button{
-  float:right;
-  font-size: 20px;
-  height:30px;
-  width:30px;
-  cursor:pointer;
-  color: #3399cc;
-  background-color:#f2f2f2;
-  border:none;
-  border-radius:20px;
-  outline:none;
-  margin-right: 5px;
-}
-
-#todo-edit-button-editing{
-  float:right;
-  height:30px;
-  width:30px;
-  cursor:pointer;
-  background-color:#45a049;
+#todo-done-button:hover {
+  background-color: #75b79e;
   color: white;
-  border:none;
-  border-radius:20px;
-  outline:none;
-  margin-right: 5px;
 }
-#todo-edit-button:hover{
-  background-color:#45a049;
-  color:white;
-}
-#todo-edit-button:active{
+
+#todo-done-button:active {
   transform: translateY(4px);
 }
 
-#todo-delete-button{
-  float:right;
-  height:30px;
-  width:30px;
-  cursor:pointer;
+#todo-edit-button {
+  float: right;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
   color: #3399cc;
-  background-color:#f2f2f2;
-  border:none;
-  border-radius:20px;
-  outline:none;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  margin-right: 5px;
+}
+
+#todo-edit-button-editing {
+  float: right;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-color: #45a049;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  margin-right: 5px;
+}
+#todo-edit-button:hover {
+  background-color: #45a049;
+  color: white;
+}
+#todo-edit-button:active {
+  transform: translateY(4px);
+}
+
+#todo-delete-button {
+  float: right;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: #3399cc;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 20px;
+  outline: none;
   font-size: 20px;
   margin-right: 5px;
 }
 
-#todo-delete-button:hover{
-  background-color:#fa163f;
-  color:white;
+#todo-delete-button:hover {
+  background-color: #fa163f;
+  color: white;
 }
 
-#todo-delete-button:active{
+#todo-delete-button:active {
   transform: translateY(4px);
 }
 
-#todo-title{
-  background-color:#f2f2f2;
+#todo-title {
+  background-color: #f2f2f2;
   color: #3399cc;
-  font-weight:bold;
-  font-size:16px;
+  font-weight: bold;
+  font-size: 16px;
   float: left;
-  width:100%;
+  width: 100%;
 }
 
-#title-editing{
-  background-color:#f2f2f2;
-  font-weight:bold;
-  font-size:15px;
+#title-editing {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 15px;
   float: left;
-  width:100%;
+  width: 100%;
+  border-bottom: 1px solid #3399cc;
+  outline: none;
+  color: #3399cc;
+}
+
+#title-editing:focus {
+  border-bottom: 3px solid #3399cc;
+}
+
+#description-editing {
+  background-color: #f2f2f2;
+  font-weight: lighter;
+  font-size: 12px;
+  color: #3399cc;
+  float: left;
+  width: 100%;
   border-bottom: 1px solid #3399cc;
   outline: none;
 }
 
-#title-editing:focus{
+#description-editing:focus {
   border-bottom: 3px solid #3399cc;
 }
 
-
-#description-editing{
-  background-color:#f2f2f2;
-  font-weight:lighter;
-  font-size:12px;
-  float: left;
-  width:100%;
-  border-bottom: 1px solid #3399cc;
-  outline: none;
-}
-
-#description-editing:focus{
-  border-bottom: 3px solid #3399cc;
-
-}
-
-#todo-description{
-  background-color:#f2f2f2;
-  color:grey;
-  font-size:14px;
+#todo-description {
+  background-color: #f2f2f2;
+  color: grey;
+  font-size: 14px;
   float: left;
   margin: 0;
   margin-bottom: 5px;
   width: 100%;
+}
+
+#change-name {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  border: 1px solid black;
+  background-color: #f2f2f2;
+  display: none;
+}
+
+#change-email {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  border: 1px solid black;
+  background-color: #f2f2f2;
+  display: none;
+}
+
+#delete-user-menu {
+  display: none;
+  margin-top: 315px;
+  color: #c1392b;
+}
+
+#delete-account-popup {
+  display: none;
+  position: absolute;
+  top: 25%;
+  z-index: 11;
+  background-color: white;
+  color: #696969;
+  margin: 15px;
+  border-radius: 5px;
+}
+
+#delete-account-header {
+  margin: 10px;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+#delete-account-body {
+  margin: 10px;
+  border-top: 1px solid #bdbcbc;
+  font-size: 15px;
+}
+
+#delete-account-information {
+  padding-left: 10px;
+}
+
+#delete-account-text-wrong-input {
+  display: none;
+  margin: -7px 0 0 10px;
+  color: #c1392b;
+}
+
+#delete-account-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#delete-account-text {
+  width: 60%;
+  display: inline-block;
+}
+
+#delete-account-button {
+  display: inline-block;
+  height: 43px;
+  margin: 10px;
+  background-color: #c1392b;
+  color: #f1f1f1;
+  outline: none;
+  border: none;
+}
+
+#delete-account-label {
+  margin-bottom: 3px;
+  font-size: 15px;
+  color: #bdbcbc;
+}
+
+#return-to-main-page-text {
+  color: #696969;
+  margin-top: 20px;
+  line-height: 0.5;
+  text-align: center;
+}
+#return-to-main-page-text span {
+  display: inline-block;
+  position: relative;
+}
+#return-to-main-page-text span:before,
+#return-to-main-page-text span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 2px solid #3399cc;
+  border-top: 2px solid #3399cc;
+  top: 0;
+  width: 60px;
+}
+#return-to-main-page-text span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+#return-to-main-page-text span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+#return-to-main-page-button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #3399cc;
+  color: #f1f1f1;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  text-align: center;
+  height: 40px;
+  width: 150px;
+  margin: 15px 0 15px 0;
+}
+
+#overlay {
+  display: none;
+  opacity: 0.5;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+body {
+  background-image: linear-gradient(#2ea8df, #3399cc);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  justify-content: center;
+}
+
+.login-card a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.login-card a:hover,
+.login-card a:focus {
+  color: #fdc654;
+  transition: all 0.2s;
+}
+
+.login-card {
+  padding: 32px 32px 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  max-height: 740px;
+  max-width: 350px;
+  flex-direction: column;
+}
+
+.login-card-content {
+  flex-grow: 2;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card-footer {
+  padding: 32px 0;
+}
+
+h2 .highlight {
+  color: #fdc654;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.login-card h3 {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+}
+
+.header {
+  margin-bottom: 50px;
+}
+
+.logo {
+  border-radius: 40px;
+
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 16px;
+  align-items: center;
+}
+#app-logo {
+  margin-top: -20px;
+  margin-bottom: 0;
+  width: 400px;
+  height: 250px;
+}
+.login-card button {
+  background: white;
+  display: block;
+  color: #2ea8df;
+  width: 100%;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 32px;
+  outline: none;
+}
+
+.form-field {
+  margin-bottom: 16px;
+  width: 100%;
+  position: relative;
+}
+
+.form-field .icon {
+  position: absolute;
+  background: white;
+  color: #3399cc;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#eye-open {
+  display: block;
+  position: absolute;
+  right: 2px;
+  top: 9px;
+  color: #fdc654;
+  font-size: 24px;
+}
+
+.eyes-for-password {
+}
+
+.form-field .icon:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-left: 12px solid white;
+  position: absolute;
+  top: 8px;
+  right: -20px;
+}
+
+.form-field input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  width: 100%;
+  border-radius: 16px;
+  height: 36px;
+  background: #2ea8df;
+  color: white;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-field input::placeholder {
+  color: white;
+}
+
+.form-field input:hover,
+.form-field input:focus {
+  background: white;
+  color: #3399cc;
+  transition: all 0.2s;
+}
+
+.form-field input:hover::placeholder {
+  color: #3399cc;
+}
+
+.login-card {
+  background-image: linear-gradient(#2ea8df, #3399cc);
+}
+
+#side-nav-header {
+  background-color: #3399cc;
+  
+}
+
+#mySidenav {
+  background-color: #3399cc;
+}
+
+#side-nav-user-photo {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  width: 100px;
+  background-color: white;
+  margin-top: -30px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#side-nav-user-text {
+  text-align: center;
+  font-size: 18px;
+}
+
+#side-nav-body {
+  background-color: #ffffff;
+  height: 100%;
+  padding-top: 20px;
+}
+
+#side-nav-options {
+  color: #3399cc;
+}
+
+
+.side-nav-container {
+  display: flex;
+  padding-top: 5px;
+  padding-left: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+
+.side-nav-icon {
+  position: relative;
+  padding-right: 10px;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-right: -20px;
 }

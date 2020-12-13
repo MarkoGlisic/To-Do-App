@@ -1,5 +1,5 @@
-# Random Quote Machine
-> Random Quote Machine that displays data from "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
+# To Do App
+> Todo Application built with HTML, CSS, JavaScript and Firebase
 
 ## Table of contents
 * [Technologies](#technologies)
@@ -18,16 +18,16 @@
 
 ## Features
 List of features ready and TODOs for future development
-* Displays random quotes
-* Changes the quote once quote box is clicked
-* Sets Random color scheme for every quote
-* Twitter and Tumblr buttons that redirects user to said sites and prompts new tweet / post with quote and author content
+* User Authentification (Register, Login, Log-Out, Reset Password)
+* To Do's for each user that can be created, edited and deleted.
+* User Account Setings (Change name, email, passoword, delete account)
+
 
 To-do list:
 * Refactor Code
-* Possibly change project to be Google Chrome Extension that will be displayed on Home / Start-up page
-* Project was initially created in with sole purpose of practicing JavaScript and DOM manipulation. 
-Responsive design was not included. Future version of the project might include media queries for all screen sizes
+* Adapt design for all screen sizes
+* Add other methods of signing in (Facebook, Google etc.)
+
 
 ## Status
 Project is: Completed
